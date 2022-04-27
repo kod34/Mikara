@@ -39,9 +39,9 @@ def get_profile():
         for x in birthday[:2]:
             birthday_stripped.append(x.lstrip('0'))
         if birthday_stripped[0] == birthday[0]:
-            birthday_stripped.pop(birthday_stripped[0])
+            birthday_stripped.pop(0)
         if birthday_stripped[1] == birthday[1]:
-            birthday_stripped.pop(birthday_stripped[1])
+            birthday_stripped.pop(1)
     
     
     pets = input("Pet Names: ").split()
