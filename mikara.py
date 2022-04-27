@@ -83,7 +83,7 @@ def main4():
     
     get_profile()
     
-    print(color.BLUE+"\n[~] Generating ultra complex wordlist..."+color.END)
+    print(color.BLUE+"\n[~] Generating GIGA CHAD wordlist..."+color.END)
 
     # Simple
     set_0()
@@ -100,7 +100,7 @@ def main4():
     set_22()
     set_222()
     
-    # Ultra Complex
+    # giga chad
     set_3()
     set_33()
     set_333()
@@ -131,7 +131,7 @@ if __name__ == '__main__':
         main3()
         print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
         
-    elif args.output != None and args.type == 'ultracomplex':
+    elif args.output != None and args.type == 'gigachad':
         print(banner)
         main4()
         print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)

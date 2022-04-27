@@ -21,12 +21,12 @@ def get_profile():
     p = False
     
     # Get info
-    fullname = input("[*] Full Name: ").split()
-    nickname = input("[*] Nickname: ").split()
+    fullname = input(color.YELLOW+"[*] Full Name: "+color.END).lower().split()
+    nickname = input(color.YELLOW+"[*] Nickname: "+color.END).lower().split()
     
     ## Validate Birthday
     while (not res and len(birthday) != 0) or not p:
-        birthday = input("[*] Birthday(DD-MM-YYYY): ")
+        birthday = input(color.YELLOW+"[*] Birthday(DD-MM-YYYY): "+color.END)
         p = True
         try:
             res = bool(datetime.strptime(birthday, '%d-%m-%Y'))
@@ -44,22 +44,22 @@ def get_profile():
             birthday_stripped.pop(1)
     
     
-    pets = input("[*] Pet Names: ").split()
-    mothername = input("[*] Mother's Full Name: ").split()
-    fathername = input("[*] Father's Full Name: ").split()
-    partnername = input("[*] Partner's Full Name: ").split()
-    children = input("[*] Chidren's First Names(ex: adam sara): ").split()
-    children_nick = input("[*] Chidren's Nicknames: ").split()
+    pets = input(color.YELLOW+"[*] Pet Names: "+color.END).lower().split()
+    mothername = input(color.YELLOW+"[*] Mother's Full Name: "+color.END).lower().split()
+    fathername = input(color.YELLOW+"[*] Father's Full Name: "+color.END).lower().split()
+    partnername = input(color.YELLOW+"[*] Partner's Full Name: "+color.END).lower().split()
+    children = input(color.YELLOW+"[*] Chidren's First Names(ex: adam sara): "+color.END).lower().split()
+    children_nick = input(color.YELLOW+"[*] Chidren's Nicknames: "+color.END).lower().split()
     
     ## for language and maybe stats on passwords
-    country = input("[*] Country Of Residence: ").split()
-    state = input("[*] State Of Residence: ").split()
-    city = input("[*] City Of Residence: ").split()
-    race = input("[*] Race: ").split()
+    country = input(color.YELLOW+"[*] Country Of Residence: "+color.END).lower().split()
+    state = input(color.YELLOW+"[*] State Of Residence: "+color.END).lower().split()
+    city = input(color.YELLOW+"[*] City Of Residence: "+color.END).lower().split()
+    race = input(color.YELLOW+"[*] Race: ").lower().split()
     
-    company = input("[*] Company's Name: ").split()
-    interests = input("[*] Interests(ex: football chess): ").split()
-    extra = input("[*] Extra keywords(ex: nasa apple): ").split()
+    company = input(color.YELLOW+"[*] Company's Name: "+color.END).lower().split()
+    interests = input(color.YELLOW+"[*] Interests(ex: football chess): "+color.END).lower().split()
+    extra = input(color.YELLOW+"[*] Extra keywords(ex: nasa apple): "+color.END).lower().split()
         
     # Build profile
     profile['fullname'] = fullname
@@ -75,7 +75,6 @@ def get_profile():
     profile['country'] = country
     profile['state'] = state
     profile['city'] = city
-    profile['race '] = race 
     profile['company'] = company
     profile['interests'] = interests
     profile['extra'] = extra
@@ -94,7 +93,7 @@ def data_list():
 # Generate simple wordset with solo keys (ex: john\n smith\n football\n)
 def set_0():
     for x in profile:
-        if x != 'race' and x != 'country' and x != 'company' and x != 'state' and x != 'city' and profile[x] != []:
+        if x != 'country' and x != 'company' and x != 'state' and x != 'city' and profile[x] != []:
             if len(profile[x]) > 1:
                 word = ''.join(profile[x])
                 if len(word) > 3:
