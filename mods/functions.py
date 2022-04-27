@@ -2,6 +2,7 @@ from curses.ascii import isdigit
 from itertools import *
 from datetime import datetime
 from mods.args import *
+from mods.colors import *
 
 
 common_first = [ '!', '@', '*', '$', '&', '%', '123', '456', '789', '000', '321', '987', '654', '321'] + list(range(0,99))
@@ -21,12 +22,12 @@ def get_profile():
     p = False
     
     # Get info
-    fullname = input("Full Name: ").split()
-    nickname = input("Nickname: ").split()
+    fullname = input("[*] Full Name: ").split()
+    nickname = input("[*] Nickname: ").split()
     
     ## Validate Birthday
     while (not res and len(birthday) != 0) or not p:
-        birthday = input("Birthday(DD-MM-YYYY): ")
+        birthday = input("[*] Birthday(DD-MM-YYYY): ")
         p = True
         try:
             res = bool(datetime.strptime(birthday, '%d-%m-%Y'))
@@ -44,22 +45,22 @@ def get_profile():
             birthday_stripped.pop(1)
     
     
-    pets = input("Pet Names: ").split()
-    mothername = input("Mother's Full Name: ").split()
-    fathername = input("Father's Full Name: ").split()
-    partnername = input("Partner's Full Name: ").split()
-    children = input("Chidren's First Names(ex: adam sara): ").split()
-    children_nick = input("Chidren's Nicknames: ").split()
+    pets = input("[*] Pet Names: ").split()
+    mothername = input("[*] Mother's Full Name: ").split()
+    fathername = input("[*] Father's Full Name: ").split()
+    partnername = input("[*] Partner's Full Name: ").split()
+    children = input("[*] Chidren's First Names(ex: adam sara): ").split()
+    children_nick = input("[*] Chidren's Nicknames: ").split()
     
     ## for language and maybe stats on passwords
-    country = input("Country Of Residence: ").split()
-    state = input("State Of Residence: ").split()
-    city = input("City Of Residence: ").split()
-    race = input("Race: ").split()
+    country = input("[*] Country Of Residence: ").split()
+    state = input("[*] State Of Residence: ").split()
+    city = input("[*] City Of Residence: ").split()
+    race = input("[*] Race: ").split()
     
-    company = input("Company's Name: ").split()
-    interests = input("Interests(ex: football chess): ").split()
-    extra = input("Extra keywords(ex: nasa apple): ").split()
+    company = input("[*] Company's Name: ").split()
+    interests = input("[*] Interests(ex: football chess): ").split()
+    extra = input("[*] Extra keywords(ex: nasa apple): ").split()
         
     # Build profile
     profile['fullname'] = fullname
@@ -98,10 +99,12 @@ def set_0():
             if len(profile[x]) > 1:
                 word = ''.join(profile[x])
                 if len(word) > 3:
+                    print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
                     global_list.append(word)
                 for y in profile[x]:
                     word = str(y)
                     if len(word) > 3:
+                        print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
                         global_list.append(word)
             else:
                 try:
@@ -109,6 +112,7 @@ def set_0():
                 except IndexError:
                     word = str(profile[x])
                 if len(word) > 3:
+                    print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
                     global_list.append(word)
          
 # Generate simple wordset with 2 mixed keys (ex: johnfootball\n john1990\n)
@@ -117,6 +121,7 @@ def set_00():
     for c in list(a):
         word = c[0]+c[1]
         if len(word) > 3:
+            print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
             global_list.append(word)
                     
 # Generate simple wordset with 3 mixed keys (ex: johnfootball1990\n johnlinda2010\n)
@@ -125,6 +130,7 @@ def set_000():
     for c in list(a):
         word = c[0]+c[1]+c[2]
         if len(word) > 3:
+            print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
             global_list.append(word)
                 
 # Generate words beginning with common_first list
@@ -138,7 +144,9 @@ def set_1():
             notdigit = True
         if notdigit:
             for c in common_first:
-                m_global_list.append(str(c)+str(x))
+                word = str(c)+str(x)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word)
              
 # Generate words with common_middle
 def set_11():
@@ -146,12 +154,16 @@ def set_11():
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
-                m_global_list.append(str(c).join(x))
+                word = str(c).join(x)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
-                m_global_list.append(str(c).join(x))
+                word = str(c).join(x)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word)
                         
 # Generate words with common_last
 def set_111():
@@ -164,7 +176,9 @@ def set_111():
             notdigit = True
         if notdigit:
             for c in common_last:
-                m_global_list.append(str(x)+str(c))             
+                word = str(x)+str(c)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word)             
                         
 # Generate words mixed common_first common_last
 def set_2():
@@ -177,7 +191,9 @@ def set_2():
             notdigit = True
         if notdigit:
             for c in common_middle:
-                m_global_list.append(str(c)+str(x)+str(c)) 
+                word = str(c)+str(x)+str(c)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word) 
                 
 # Generate words mixed common_first common_middle
 def set_22():
@@ -185,12 +201,16 @@ def set_22():
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
-                m_global_list.append(str(c)+str(c).join(x))
+                word = str(c)+str(c).join(x)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
-                m_global_list.append(str(c)+str(c).join(x)) 
+                word = str(c)+str(c).join(x)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word) 
                 
 # Generate words mixed common_middle common_last
 def set_222():
@@ -198,12 +218,16 @@ def set_222():
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
-                m_global_list.append(str(c).join(x)+str(c))
+                word = str(c).join(x)+str(c)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
-                m_global_list.append(str(c).join(x)+str(c))
+                word = str(c).join(x)+str(c)
+                print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                m_global_list.append(word)
                 
 # Generate words mixed common_first common_last
 def set_3():
@@ -217,7 +241,9 @@ def set_3():
         if notdigit:
             for c in common_last:
                 for g in common_first:
-                    m_global_list.append(str(g)+str(x)+str(c)) 
+                    word = str(g)+str(x)+str(c)
+                    print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                    m_global_list.append(word) 
                 
 # Generate words mixed common_first common_middle
 def set_33():
@@ -226,13 +252,17 @@ def set_33():
         if not ''.join(x).isdigit():
             for c in common_middle:
                 for g in common_first:
-                    m_global_list.append(str(g)+str(c).join(x))
+                    word = str(g)+str(c).join(x)
+                    print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                    m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
                 for g in common_first:
-                    m_global_list.append(str(g)+str(c).join(x)) 
+                    word = str(g)+str(c).join(x)
+                    print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                    m_global_list.append(word) 
                 
 # Generate words mixed common_middle common_last
 def set_333():
@@ -241,10 +271,14 @@ def set_333():
         if not ''.join(x).isdigit():
             for c in common_middle:
                 for g in common_last:
-                    m_global_list.append(str(c).join(x)+str(g))
+                    word = str(c).join(x)+str(g)
+                    print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                    m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
                 for g in common_last:
-                    m_global_list.append(str(c).join(x)+str(g))
+                    word = str(c).join(x)+str(g)
+                    print('Progress: '+color.YELLOW+'%s\r'%word+color.END, end="")
+                    m_global_list.append(word)
