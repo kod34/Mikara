@@ -6,7 +6,7 @@
 
 ---
 
-<p align="center"> Mikara is a tool that generates a list of passwords that are likely to be used by the target based on the information provided.  
+<p align="center"> Mikara is a tool that takes into input information gathered about a target and generates a passwordlist specific for that target.
     <br> 
 </p>
 
