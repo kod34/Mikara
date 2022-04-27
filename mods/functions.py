@@ -16,20 +16,33 @@ def get_profile():
     global profile
     profile = {}
     birthday_stripped = []
+    birthday = []
     res = False
+    p = False
     
     # Get info
     fullname = input("Full Name: ").split()
     nickname = input("Nickname: ").split()
     
     ## Validate Birthday
-    while not res:
+    while (not res and len(birthday) != 0) or not p:
         birthday = input("Birthday(DD-MM-YYYY): ")
+        p = True
         try:
             res = bool(datetime.strptime(birthday, '%d-%m-%Y'))
         except ValueError:
             res = False
-    birthday = birthday.split('-')
+            
+    ## Add items to birthday
+    if len(birthday) > 2:
+        birthday = birthday.split('-')
+        for x in birthday[:2]:
+            birthday_stripped.append(x.lstrip('0'))
+        if birthday_stripped[0] == birthday[0]:
+            birthday_stripped.pop(birthday_stripped[0])
+        if birthday_stripped[1] == birthday[1]:
+            birthday_stripped.pop(birthday_stripped[1])
+    
     
     pets = input("Pet Names: ").split()
     mothername = input("Mother's Full Name: ").split()
@@ -47,21 +60,12 @@ def get_profile():
     company = input("Company's Name: ").split()
     interests = input("Interests(ex: football chess): ").split()
     extra = input("Extra keywords(ex: nasa apple): ").split()
-    
-    ## Add items to birthday
-    for x in birthday:
-        birthday_stripped.append(x.lstrip('0'))
-    if birthday_stripped != birthday:
-        b = True
-    else:
-        b = False
         
     # Build profile
     profile['fullname'] = fullname
     profile['nickname'] = nickname
     profile['birthday'] = birthday
-    if b:
-        profile['birthday_stripped'] = birthday_stripped
+    profile['birthday_stripped'] = birthday_stripped
     profile['pets'] = pets
     profile['mothername'] = mothername
     profile['fathername'] = fathername
@@ -100,7 +104,10 @@ def set_0():
                     if len(word) > 3:
                         global_list.append(word)
             else:
-                word = str(profile[x][0])
+                try:
+                    word = str(profile[x][0])
+                except IndexError:
+                    word = str(profile[x])
                 if len(word) > 3:
                     global_list.append(word)
          
