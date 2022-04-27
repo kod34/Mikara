@@ -218,8 +218,8 @@ def set_33():
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
-                for c in common_first:
-                    m_global_list.append(str(c)+str(c).join(x))
+                for g in common_first:
+                    m_global_list.append(str(g)+str(c).join(x))
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
@@ -233,8 +233,8 @@ def set_333():
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
-                for c in common_last:
-                    m_global_list.append(str(c).join(x)+str(c))
+                for g in common_last:
+                    m_global_list.append(str(c).join(x)+str(g))
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
