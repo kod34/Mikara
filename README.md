@@ -49,7 +49,7 @@ optional arguments:
 
 required named arguments:
   -o OUTPUT, --output OUTPUT  wordlist path
-  -t TYPE, --type TYPE  list type (simple, moderate, complex)
+  -t TYPE, --type TYPE  list type (simple, moderate, complex, ultracomplex)
 ```
 ### Examples:  
 
