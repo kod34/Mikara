@@ -42,14 +42,16 @@ chmod +x install.sh
 ## 🎈 Usage <a name="usage"></a>
 
 ```
-mikara [-h] [-o OUTPUT] [-t TYPE]
+mikara [-h] [-o OUTPUT] [-t TYPE] [-s SIZE]
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
 
 required named arguments:
-  -o OUTPUT, --output OUTPUT  wordlist path
-  -t TYPE, --type TYPE  list type (simple, moderate, complex, ultracomplex)
+  -o OUTPUT, --output OUTPUT wordlist path
+  -t TYPE, --type TYPE  list type (simple, moderate, complex)
+  -s SIZE, --size SIZE  minimum word size
+
 ```
 ### Examples:  
 

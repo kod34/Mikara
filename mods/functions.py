@@ -96,12 +96,12 @@ def set_0():
         if x != 'country' and x != 'company' and x != 'state' and x != 'city' and profile[x] != []:
             if len(profile[x]) > 1:
                 word = ''.join(profile[x])
-                if len(word) > 3:
+                if len(word) >= int(size):
                     print("Progress: "+color.YELLOW+str(len(global_list))+color.END, end="\r")
                     global_list.append(word)
                 for y in profile[x]:
                     word = str(y)
-                    if len(word) > 3:
+                    if len(word) >= int(size):
                         print("Progress: "+color.YELLOW+str(len(global_list))+color.END, end="\r")
                         global_list.append(word)
             else:
@@ -109,7 +109,7 @@ def set_0():
                     word = str(profile[x][0])
                 except IndexError:
                     word = str(profile[x])
-                if len(word) > 3:
+                if len(word) >= int(size):
                     print("Progress: "+color.YELLOW+str(len(global_list))+color.END, end="\r")
                     global_list.append(word)
          
@@ -118,7 +118,7 @@ def set_00():
     a = permutations(data_list(),2)
     for c in list(a):
         word = c[0]+c[1]
-        if len(word) > 3:
+        if len(word) >= int(size):
             print("Progress: "+color.YELLOW+str(len(global_list))+color.END, end="\r")
             global_list.append(word)
                     
@@ -127,7 +127,7 @@ def set_000():
     a = permutations(data_list(),3)
     for c in list(a):
         word = c[0]+c[1]+c[2]
-        if len(word) > 3:
+        if len(word) >= int(size):
             print("Progress: "+color.YELLOW+str(len(global_list))+color.END, end="\r")
             global_list.append(word)
                 
@@ -153,15 +153,17 @@ def set_11():
         if not ''.join(x).isdigit():
             for c in common_middle:
                 word = str(c).join(x)
-                print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                m_global_list.append(word)
+                if len(word) >= int(size):
+                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                    m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
                 word = str(c).join(x)
-                print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                m_global_list.append(word)
+                if len(word) >= int(size):
+                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                    m_global_list.append(word)
                         
 # Generate words with common_last
 def set_111():
@@ -200,15 +202,17 @@ def set_22():
         if not ''.join(x).isdigit():
             for c in common_middle:
                 word = str(c)+str(c).join(x)
-                print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                m_global_list.append(word)
+                if len(word) >= int(size):
+                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                    m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
                 word = str(c)+str(c).join(x)
-                print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                m_global_list.append(word) 
+                if len(word) >= int(size):
+                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                    m_global_list.append(word) 
                 
 # Generate words mixed common_middle common_last
 def set_222():
@@ -217,15 +221,17 @@ def set_222():
         if not ''.join(x).isdigit():
             for c in common_middle:
                 word = str(c).join(x)+str(c)
-                print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                m_global_list.append(word)
+                if len(word) >= int(size):
+                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                    m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
                 word = str(c).join(x)+str(c)
-                print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                m_global_list.append(word)
+                if len(word) >= int(size):
+                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                    m_global_list.append(word)
                 
 # Generate words mixed common_first common_last
 def set_3():
@@ -251,16 +257,18 @@ def set_33():
             for c in common_middle:
                 for g in common_first:
                     word = str(g)+str(c).join(x)
-                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                    m_global_list.append(word)
+                    if len(word) >= int(size):
+                        print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                        m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
                 for g in common_first:
                     word = str(g)+str(c).join(x)
-                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                    m_global_list.append(word) 
+                    if len(word) >= int(size):
+                        print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                        m_global_list.append(word) 
                 
 # Generate words mixed common_middle common_last
 def set_333():
@@ -270,13 +278,15 @@ def set_333():
             for c in common_middle:
                 for g in common_last:
                     word = str(c).join(x)+str(g)
-                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                    m_global_list.append(word)
+                    if len(word) >= int(size):
+                        print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                        m_global_list.append(word)
     a = permutations(data_list(),3)
     for x in list(a):
         if not ''.join(x).isdigit():
             for c in common_middle:
                 for g in common_last:
                     word = str(c).join(x)+str(g)
-                    print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
-                    m_global_list.append(word)
+                    if len(word) >= int(size):
+                        print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                        m_global_list.append(word)

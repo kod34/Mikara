@@ -116,22 +116,22 @@ def main4():
     
 
 if __name__ == '__main__':
-    if args.output != None and args.type == 'simple':
+    if args.output != None and args.type == 'simple' and args.size != None:
         print(banner)
         main1()
         print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
         
-    elif args.output != None and args.type == 'moderate':
+    elif args.output != None and args.type == 'moderate' and args.size != None:
         print(banner)
         main2()
         print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
         
-    elif args.output != None and args.type == 'complex':
+    elif args.output != None and args.type == 'complex' and args.size != None :
         print(banner)
         main3()
         print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
         
-    elif args.output != None and args.type == 'gigachad':
+    elif args.output != None and args.type == 'gigachad' and args.size != None:
         print(banner)
         main4()
         print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
