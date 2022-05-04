@@ -112,29 +112,27 @@ def main4():
         for x in set(global_list+m_global_list):
             print("Progress: "+color.YELLOW+x+color.END, end="\r")
             w.write(x+"\n")
-            
-    
-
-if __name__ == '__main__':
-    if args.output != None and args.type == 'simple' and args.size != None:
-        print(banner)
-        main1()
-        print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
-        
-    elif args.output != None and args.type == 'moderate' and args.size != None:
-        print(banner)
-        main2()
-        print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
-        
-    elif args.output != None and args.type == 'complex' and args.size != None :
-        print(banner)
-        main3()
-        print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
-        
-    elif args.output != None and args.type == 'gigachad' and args.size != None:
-        print(banner)
-        main4()
-        print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
-        
-    else:
-        parser.error("A required argument is missing")        
+try:
+    if __name__ == '__main__':
+        try: int(args.size)
+        except: sys.exit(color.RED+"[-] Size must be an integer"+color.END)
+        if args.output != None and args.type == 'simple' and args.size != None and int(args.size):
+            print(banner)
+            main1()
+            print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
+        elif args.output != None and args.type == 'moderate' and args.size != None:
+            print(banner)
+            main2()
+            print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
+        elif args.output != None and args.type == 'complex' and args.size != None :
+            print(banner)
+            main3()
+            print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
+        elif args.output != None and args.type == 'gigachad' and args.size != None:
+            print(banner)
+            main4()
+            print(color.GREEN+"[+] "+color.YELLOW+str(len(set(global_list+m_global_list)))+color.GREEN+" words saved to "+color.YELLOW+os.path.abspath(wordlist)+color.END+color.END)
+        else:
+            parser.error(color.RED+"A required argument is missing"+color.END)  
+except KeyboardInterrupt:
+    sys.exit(color.RED+"[-] Keyboard Interrupt"+color.END)

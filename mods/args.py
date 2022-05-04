@@ -13,7 +13,4 @@ args = parser.parse_args()
 
 wordlist = args.output
 type = args.type
-try:
-    size = int(args.size)
-except ValueError:
-    sys.exit(color.RED+"[-] Size argument should be an integer\nExiting...")
+size = args.size

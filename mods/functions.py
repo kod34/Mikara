@@ -43,7 +43,7 @@ def get_profile():
         if birthday_stripped[1] == birthday[1]:
             birthday_stripped.pop(1)
     
-    
+    year = input(color.YELLOW+"[*] Current year: "+color.END).lower().split()
     pets = input(color.YELLOW+"[*] Pet Names: "+color.END).lower().split()
     mothername = input(color.YELLOW+"[*] Mother's Full Name: "+color.END).lower().split()
     fathername = input(color.YELLOW+"[*] Father's Full Name: "+color.END).lower().split()
@@ -66,6 +66,7 @@ def get_profile():
     profile['nickname'] = nickname
     profile['birthday'] = birthday
     profile['birthday_stripped'] = birthday_stripped
+    profile['year'] = year
     profile['pets'] = pets
     profile['mothername'] = mothername
     profile['fathername'] = fathername
