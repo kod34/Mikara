@@ -42,7 +42,7 @@ chmod +x install.sh
 ## 🎈 Usage <a name="usage"></a>
 
 ```
-mikara [-h] [-o OUTPUT] [-t TYPE] [-s SIZE]
+mikara [-h] -o OUTPUT -t TYPE -s SIZE
 
 options:
   -h, --help            show this help message and exit
