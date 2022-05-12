@@ -18,6 +18,6 @@ banner = '''
 {1}| |\/| | | |/ / _` | '__/ _` |
 {2}| |  | | |   < (_| | | | (_| |
 {2}|_|  |_|_|_|\_\__,_|_|  \__,_|
-              {3}by kod34{4}
+              {1}by kod34{4}
                               
 '''.format(color.BLUE, color.PURPLE, color.GREEN, color.RED, color.END)

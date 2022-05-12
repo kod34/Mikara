@@ -3,11 +3,12 @@ from itertools import *
 from datetime import datetime
 from mods.args import *
 from mods.colors import *
+import time
 
 
-common_first = [ '!', '@', '*', '$', '&', '%', '123', '456', '789', '000', '321', '987', '654', '321'] + list(range(0,99))
-common_middle = ['_', '.', '-', '!', '@', '*', '$', '?', '&', '%', '123', '456', '789', '000', '321', '987', '654', '321'] + list(range(0,99))
-common_last = ['.', '!', '@', '*', '$', '?', '&', '%', '123', '456', '789', '000', '321', '987', '654', '321'] + list(range(0,99))
+common_first = [ '!', '@', '*', '$', '&', '%', '123', '456', '789', '000', '321', '987', '654', '321']+list(range(0,99))
+common_middle = ['_', '.', '-', '!', '@', '*', '$', '?', '&', '%', '123', '456', '789', '000', '321', '987', '654', '321']+list(range(0,99))
+common_last = ['.', '!', '@', '*', '$', '?', '&', '%', '123', '456', '789', '000', '321', '987', '654', '321']+list(range(0,99))
 
 global_list = []
 m_global_list = []
@@ -20,6 +21,8 @@ def get_profile():
     res = False
     p = False
     
+    print(color.RED+"\n[!] Remember to exclude info that you're confident your target wouldn't use in their password. Be smart!\n"+color.END)
+    time.sleep(1)
     # Get info
     fullname = input(color.YELLOW+"[*] Full Name: "+color.END).lower().split()
     nickname = input(color.YELLOW+"[*] Nickname: "+color.END).lower().split()
@@ -43,7 +46,7 @@ def get_profile():
         if birthday_stripped[1] == birthday[1]:
             birthday_stripped.pop(1)
     
-    year = input(color.YELLOW+"[*] Current year: "+color.END).lower().split()
+    year = input(color.YELLOW+"[*] Significant year(ex: GraduationYear): "+color.END).lower().split()
     pets = input(color.YELLOW+"[*] Pet Names: "+color.END).lower().split()
     mothername = input(color.YELLOW+"[*] Mother's Full Name: "+color.END).lower().split()
     fathername = input(color.YELLOW+"[*] Father's Full Name: "+color.END).lower().split()
@@ -53,9 +56,12 @@ def get_profile():
     
     ## for language and maybe stats on passwords
     country = input(color.YELLOW+"[*] Country Of Residence: "+color.END).lower().split()
+    countryb = input(color.YELLOW+"[*] Country Of Birth: "+color.END).lower().split()
     state = input(color.YELLOW+"[*] State Of Residence: "+color.END).lower().split()
+    stateb = input(color.YELLOW+"[*] State Of birth: "+color.END).lower().split()
     city = input(color.YELLOW+"[*] City Of Residence: "+color.END).lower().split()
-    race = input(color.YELLOW+"[*] Race: ").lower().split()
+    cityb = input(color.YELLOW+"[*] City Of Birth: "+color.END).lower().split()
+    # race = input(color.YELLOW+"[*] Race: ").lower().split()
     
     company = input(color.YELLOW+"[*] Company's Name: "+color.END).lower().split()
     interests = input(color.YELLOW+"[*] Interests(ex: football chess): "+color.END).lower().split()
@@ -74,10 +80,14 @@ def get_profile():
     profile['children'] = children
     profile['children_nick'] = children_nick
     profile['country'] = country
+    profile['countryb'] = countryb
     profile['state'] = state
+    profile['stateb'] = stateb
     profile['city'] = city
+    profile['cityb'] = cityb
     profile['company'] = company
     profile['interests'] = interests
+    # profile['race'] = race
     profile['extra'] = extra
     
     return profile
@@ -291,3 +301,26 @@ def set_333():
                     if len(word) >= int(size):
                         print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
                         m_global_list.append(word)
+          
+# Generate words mixed common first common_middle common_last              
+def set_4():
+    a = permutations(data_list(),2)
+    for x in list(a):
+        if not ''.join(x).isdigit():
+            for c in common_middle:
+                for g in common_last:
+                    for h in common_first:
+                        word = str(h)+str(c).join(x)+str(g)
+                        if len(word) >= int(size):
+                            print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                            m_global_list.append(word)
+    a = permutations(data_list(),3)
+    for x in list(a):
+        if not ''.join(x).isdigit():
+            for c in common_middle:
+                for g in common_last:
+                    for h in common_first:
+                        word = str(h)+str(c).join(x)+str(g)
+                        if len(word) >= int(size):
+                            print("Progress: "+color.YELLOW+str(len(m_global_list))+color.END, end="\r")
+                            m_global_list.append(word)
