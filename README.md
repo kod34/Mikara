@@ -49,7 +49,7 @@ options:
 
 required named arguments:
   -o OUTPUT, --output OUTPUT wordlist path
-  -t TYPE, --type TYPE  list type (simple, moderate, complex)
+  -t TYPE, --type TYPE  list type (simple, moderate, complex, impossible)
   -s SIZE, --size SIZE  minimum word size
 
 ```
