@@ -56,7 +56,7 @@ required named arguments:
 ### Examples:  
 
 ```
-mikara -o wordlist.txt -t complex
+mikara -o wordlist.txt -t complex -s 16
 ```
 
 ### 📝 Notes  
